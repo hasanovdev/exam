@@ -15,7 +15,7 @@ func main() {
 	con := controller.NewController(&cfg, strg)
 
 	// con.Task_1()
-	con.Task_3()
+	con.Task_8()
 	// res, err := con.Strg.User().GetList(&models.UserGetListRequest{
 	// 	Offset: 1,
 	// 	Limit:  100,

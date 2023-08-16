@@ -14,9 +14,8 @@ func (c *Controller) makeOrderSl1() []models.Order {
 	orders := r.Orders
 
 	mySl := make([]models.Order, 0, len(orders))
-	for _, order := range orders {
-		mySl = append(mySl, order)
-	}
+
+	mySl = append(mySl, orders...)
 
 	sort.SliceStable(mySl, func(i, j int) bool {
 		dateI, _ := time.Parse("2006-01-02 15:04:05", orders[i].DateTime)
