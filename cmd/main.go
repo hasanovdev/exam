@@ -18,7 +18,7 @@ func main() {
 
 	// con.Task_1()
 	start := time.Now()
-	con.Task_9()
+	con.Task_8()
 	dur := time.Since(start)
 	fmt.Println(dur)
 	// res, err := con.Strg.User().GetList(&models.UserGetListRequest{
