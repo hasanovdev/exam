@@ -14,6 +14,6 @@ func main() {
 	}
 	con := controller.NewController(&cfg, strg)
 
-	con.Task_1()
-
+	// con.Task_1()
+	con.Task_2()
 }
