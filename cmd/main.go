@@ -4,6 +4,8 @@ import (
 	"exam/config"
 	"exam/controller"
 	"exam/storage/memory"
+	"fmt"
+	"time"
 )
 
 func main() {
@@ -15,7 +17,10 @@ func main() {
 	con := controller.NewController(&cfg, strg)
 
 	// con.Task_1()
-	con.Task_8()
+	start := time.Now()
+	con.Task_9()
+	dur := time.Since(start)
+	fmt.Println(dur)
 	// res, err := con.Strg.User().GetList(&models.UserGetListRequest{
 	// 	Offset: 1,
 	// 	Limit:  100,

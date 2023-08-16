@@ -21,3 +21,12 @@ func (c *Controller) GetUsrName() map[string]string {
 	}
 	return res
 }
+
+func (c *Controller) GetCatName() map[string]string {
+	categories, _ := c.Strg.Category().GetList(&models.CategoryGetListRequest{Offset: 1, Limit: 1000})
+	res := make(map[string]string)
+	for _, cat := range categories.Categorys {
+		res[cat.Id] = cat.Name
+	}
+	return res
+}
