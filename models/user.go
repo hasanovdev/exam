@@ -5,22 +5,22 @@ type UserPrimaryKey struct {
 }
 
 type CreateUser struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
+	FirstName string `json:"name"`
+	LastName  string `json:"surname"`
 	Balance   int    `json:"balance"`
 }
 
 type User struct {
 	Id        string `json:"id"`
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
+	FirstName string `json:"name"`
+	LastName  string `json:"surname"`
 	Balance   int    `json:"balance"`
 }
 
 type UpdateUser struct {
 	Id        string `json:"id"`
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
+	FirstName string `json:"name"`
+	LastName  string `json:"surname"`
 	Balance   int    `json:"balance"`
 }
 

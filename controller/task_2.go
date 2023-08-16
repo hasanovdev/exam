@@ -30,6 +30,10 @@ func (c *Controller) makeOrderSl2(fromDate, toDate string) []models.Order {
 		return dateI.Before(dateJ)
 	})
 
+	if len(mySl) == 0 {
+		fmt.Println("Not Found")
+	}
+
 	return mySl
 }
 

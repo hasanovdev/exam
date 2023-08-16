@@ -52,3 +52,21 @@ func ReadOrder(fileName string) ([]models.Order, error) {
 
 	return orders, nil
 }
+
+func ReadShopCart(fileName string) ([]models.ShopCart, error) {
+	shopCarts := []models.ShopCart{}
+
+	data, err := os.ReadFile(fileName)
+	if err != nil {
+		log.Printf("Error while Read data: %+v", err)
+		return nil, err
+	}
+
+	err = json.Unmarshal(data, &shopCarts)
+	if err != nil {
+		log.Printf("Error while Unmarshal data: %+v", err)
+		return nil, err
+	}
+
+	return shopCarts, nil
+}

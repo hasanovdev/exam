@@ -15,5 +15,17 @@ func main() {
 	con := controller.NewController(&cfg, strg)
 
 	// con.Task_1()
-	con.Task_2()
+	con.Task_3()
+	// res, err := con.Strg.User().GetList(&models.UserGetListRequest{
+	// 	Offset: 1,
+	// 	Limit:  100,
+	// })
+
+	// if err != nil {
+	// 	fmt.Println("error")
+	// } else {
+	// 	for _, v := range res.Users {
+	// 		fmt.Println(*v)
+	// 	}
+	// }
 }
