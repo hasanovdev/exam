@@ -35,12 +35,12 @@ func (c *Controller) GetByIdOrder(req *models.OrderPrimaryKey) (*models.Order, e
 	return resp, nil
 }
 
-func (c *Controller) OrderGetList(req *models.OrderGetListRequest) (*models.OrderGetList, error) {
+func (c *Controller) OrderGetList(req *models.OrderGetListRequest) (models.OrderGetList, error) {
 
 	resp, err := c.Strg.Order().GetList(req)
 	if err != nil {
 		log.Printf("error while order GetList: %+v\n", err)
-		return nil, err
+		return models.OrderGetList{}, err
 	}
 
 	return resp, nil

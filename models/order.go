@@ -5,18 +5,18 @@ type OrderPrimaryKey struct {
 }
 
 type Order struct {
-	Id         string             `json:"id"`
-	UserId     string             `json:"user_id"`
-	Sum        int                `json:"sum"`
-	SumCount   int                `json:"sum_count"`
-	DateTime   string             `json:"date_time"`
-	Status     string             `json:"status"`
-	OrderItems []*CreateOrderItem `json:"order_items"`
+	Id         string            `json:"id"`
+	UserId     string            `json:"user_id"`
+	Sum        int               `json:"sum"`
+	SumCount   int               `json:"sum_count"`
+	DateTime   string            `json:"date_time"`
+	Status     string            `json:"status"`
+	OrderItems []CreateOrderItem `json:"order_items"`
 }
 
 type OrderGetList struct {
 	Count  int
-	Orders []*Order
+	Orders []Order
 }
 type CreateOrder struct {
 	UserId   string `json:"user_id"`
@@ -32,13 +32,13 @@ type OrderGetListRequest struct {
 }
 
 type UpdateOrder struct {
-	Id         string             `json:"id"`
-	UserId     string             `json:"user_id"`
-	Sum        int                `json:"sum"`
-	SumCount   int                `json:"sum_count"`
-	DateTime   string             `json:"date_time"`
-	Status     string             `json:"status"`
-	OrderItems []*CreateOrderItem `json:"order_items"`
+	Id         string            `json:"id"`
+	UserId     string            `json:"user_id"`
+	Sum        int               `json:"sum"`
+	SumCount   int               `json:"sum_count"`
+	DateTime   string            `json:"date_time"`
+	Status     string            `json:"status"`
+	OrderItems []CreateOrderItem `json:"order_items"`
 }
 
 type CreateOrderItem struct {

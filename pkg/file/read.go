@@ -2,6 +2,7 @@ package file
 
 import (
 	"encoding/json"
+	"exam/models"
 	"log"
 	"os"
 
@@ -32,4 +33,22 @@ func Read(fileName string) (map[string]interface{}, error) {
 	}
 
 	return objectMap, nil
+}
+
+func ReadOrder(fileName string) ([]models.Order, error) {
+	orders := []models.Order{}
+
+	data, err := os.ReadFile(fileName)
+	if err != nil {
+		log.Printf("Error while Read data: %+v", err)
+		return nil, err
+	}
+
+	err = json.Unmarshal(data, &orders)
+	if err != nil {
+		log.Printf("Error while Unmarshal data: %+v", err)
+		return nil, err
+	}
+
+	return orders, nil
 }

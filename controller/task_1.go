@@ -1,7 +1,6 @@
-package tasks
+package controller
 
 import (
-	"exam/helper"
 	"exam/models"
 	"fmt"
 	"sort"
@@ -10,8 +9,9 @@ import (
 	"github.com/fatih/color"
 )
 
-func makeOrderSl() []models.Order {
-	orders, _ := helper.ReadOrders()
+func (c *Controller) makeOrderSl() []models.Order {
+	r, _ := c.Strg.Order().GetList(&models.OrderGetListRequest{Offset: 1, Limit: 1000})
+	orders := r.Orders
 
 	mySl := make([]models.Order, 0, len(orders))
 	for _, order := range orders {
@@ -27,10 +27,10 @@ func makeOrderSl() []models.Order {
 	return mySl
 }
 
-func Task_1() {
-	orders := makeOrderSl()
-	usersMap := helper.GetUsrName()
-	productsMap := helper.GetPrName()
+func (c *Controller) Task_1() {
+	orders := c.makeOrderSl()
+	usersMap := c.GetUsrName()
+	productsMap := c.GetProduct()
 
 	for _, order := range orders {
 		color.Yellow("date: %s", order.DateTime)
@@ -38,7 +38,7 @@ func Task_1() {
 		fmt.Println("status:", order.Status)
 		fmt.Println("summ count:", order.SumCount)
 		for _, item := range order.OrderItems {
-			fmt.Printf("Product name: %s\nCount: %d\nPrice: %d\n", productsMap[item.ProductId], item.Count, item.TotalPrice)
+			fmt.Printf("Product name: %s\nCount: %d\nPrice: %d\n", productsMap[item.ProductId].Name, item.Count, item.TotalPrice)
 		}
 
 		fmt.Println("Total summ:", order.Sum)
