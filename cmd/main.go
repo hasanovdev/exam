@@ -19,7 +19,9 @@ func main() {
 
 	// con.Task_1()
 	start := time.Now()
-	fmt.Println(con.OrderPayment(&models.OrderPayment{OrderId: "c8ffa9a0-4a9d-4dc5-b4f0-f3603014a02c"}))
+
+	fmt.Println(con.Strg.Branch().Delete(&models.BranchPrimaryKey{Id: "341576c7-b0ed-4eea-8848-d890b17b400b"}))
+
 	dur := time.Since(start)
 	fmt.Println(dur)
 	// res, err := con.Strg.User().GetList(&models.UserGetListRequest{
