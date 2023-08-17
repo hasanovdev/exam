@@ -2,7 +2,7 @@
 	{
 		"id": "c8ffa9a0-4a9d-4dc5-b4f0-f3603014a02c",
 		"user_id": "27457ac2-74dd-4656-b9b0-0d46b1af10dc",
-		"sum": 2240000,
+		"sum": 1120000,
 		"sum_count": 10,
 		"date_time": "2023-11-16 13:30:26",
 		"status": "success",
@@ -19,7 +19,7 @@
 				"product_id": "55288fca-0360-475e-87a8-69a25d92b8fa",
 				"order_id": "ff9aa3f6-7dd2-4b2e-9376-93bc47391e82",
 				"count": 8,
-				"total_price": 280000
+				"total_price": 1120000
 			}
 		]
 	},
@@ -50,7 +50,7 @@
 			}
 		],
 		"status": "success",
-		"sum": 1680000,
+		"sum": 840000,
 		"sum_count": 6,
 		"user_id": "204ff9b0-3f4e-41b3-a436-3a1fce028fa6"
 	}

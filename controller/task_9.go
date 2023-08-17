@@ -3,6 +3,8 @@ package controller
 import (
 	"exam/pkg/file"
 	"fmt"
+
+	"github.com/jedib0t/go-pretty/v6/table"
 )
 
 func (c *Controller) makeMap9() map[string]int {
@@ -21,7 +23,14 @@ func (c *Controller) makeMap9() map[string]int {
 func (c *Controller) Task_9() {
 	shopCartsMap := c.makeMap9()
 
+	t := table.NewWriter()
+	t.AppendHeader(table.Row{"no", "name", "count"})
+
+	i := 1
 	for catId, count := range shopCartsMap {
-		fmt.Printf("Name: %s, Count: %d\n", c.GetCatName()[catId], count)
+		t.AppendRow(table.Row{i, c.GetCatName()[catId], count})
+		i++
 	}
+
+	fmt.Println(t.Render())
 }

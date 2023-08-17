@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/fatih/color"
+	"github.com/jedib0t/go-pretty/v6/table"
 )
 
 type itemSum struct {
@@ -76,10 +77,15 @@ func (c *Controller) Task_3() {
 
 	i := 1
 	for userId, valuMap := range res {
-		color.Green("%s\n", c.GetUsrName()[userId])
+		color.Green("Order User Name: %s\n", c.GetUsrName()[userId])
+		t := table.NewWriter()
+
+		t.AppendHeader(table.Row{"No", "Name", "Price", "Count", "Total", "Time"})
+
 		for productId, Summ := range valuMap {
-			fmt.Printf("%d. Name:%s, Price:%d, Count:%d, Total:%d, Time:%s\n", i, c.GetProduct()[productId].Name, Summ.Price, Summ.Count, Summ.Total, Summ.Time)
+			t.AppendRow(table.Row{i, c.GetProduct()[productId].Name, Summ.Price, Summ.Count, Summ.Total, Summ.Time})
 			i++
 		}
+		fmt.Println(t.Render())
 	}
 }

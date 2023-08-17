@@ -4,6 +4,9 @@ import (
 	"exam/pkg/file"
 	"fmt"
 	"sort"
+
+	"github.com/fatih/color"
+	"github.com/jedib0t/go-pretty/v6/table"
 )
 
 type productCount struct {
@@ -62,9 +65,15 @@ func (c *Controller) Task_8() {
 	res := c.makeSlice8()
 	myMap := c.makeMap8()
 
+	t := table.NewWriter()
+	day := color.YellowString("time")
+	t.AppendHeader(table.Row{"no", "name", day, "count"})
+
 	i := 1
 	for _, date := range res {
-		fmt.Printf("%d. Name: %s, Time: %s, Count: %d\n", i, c.GetProduct()[myMap[date].productId].Name, date, myMap[date].count)
+		t.AppendRow(table.Row{i, c.GetProduct()[myMap[date].productId].Name, color.YellowString(date), myMap[date].count})
 		i++
 	}
+
+	fmt.Println(t.Render())
 }

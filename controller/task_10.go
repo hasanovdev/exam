@@ -29,6 +29,6 @@ func (c *Controller) Task_10() {
 		}
 	}
 
-	fmt.Printf("Name: %s, Count: %d\n", name, max)
+	fmt.Printf("\nName: %s\nCount: %d\n", name, max)
 
 }

@@ -3,6 +3,9 @@ package controller
 import (
 	"fmt"
 	"sort"
+
+	"github.com/fatih/color"
+	"github.com/jedib0t/go-pretty/v6/table"
 )
 
 func (c *Controller) makeSlice7() []string {
@@ -24,12 +27,19 @@ func (c *Controller) Task_7() {
 	mySl := c.makeSlice7()
 	shopCartsMap := c.makeMap5()
 
+	t := table.NewWriter()
+	color.Yellow("Top 10 ta eng past sotilayotgan mahsulotlar ro'yxati")
+
+	t.AppendHeader(table.Row{"No", "name", "count"})
+
 	i := 1
 	for _, v := range mySl {
-		fmt.Printf("%d. Name: %s, Count: %d\n", i, c.GetProduct()[v].Name, shopCartsMap[v])
+		t.AppendRow(table.Row{i, c.GetProduct()[v].Name, shopCartsMap[v]})
 		i++
 		if i == 11 {
-			return
+			break
 		}
 	}
+
+	fmt.Println(t.Render())
 }

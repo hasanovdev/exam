@@ -154,6 +154,7 @@ func (c *Controller) OrderPayment(req *models.OrderPayment) error {
 		}
 
 		order.Sum -= minSum
+		fmt.Println("Chegirma summasi:", minSum)
 	}
 
 	order.Status = config.OrderStatus["1"]
