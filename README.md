@@ -1,0 +1,3 @@
+# exam
+
+USE: make run
