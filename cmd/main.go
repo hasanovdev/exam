@@ -3,6 +3,7 @@ package main
 import (
 	"exam/config"
 	"exam/controller"
+	"exam/models"
 	"exam/storage/memory"
 	"fmt"
 	"time"
@@ -18,7 +19,7 @@ func main() {
 
 	// con.Task_1()
 	start := time.Now()
-	con.Task_8()
+	fmt.Println(con.OrderPayment(&models.OrderPayment{OrderId: "c8ffa9a0-4a9d-4dc5-b4f0-f3603014a02c"}))
 	dur := time.Since(start)
 	fmt.Println(dur)
 	// res, err := con.Strg.User().GetList(&models.UserGetListRequest{

@@ -68,19 +68,19 @@ func (o *OrderRepo) GetById(ord *models.OrderPrimaryKey) (*models.Order, error) 
 	return &resp, nil
 }
 
-func (o *OrderRepo) GetList(ord *models.OrderGetListRequest) (models.OrderGetList, error) {
+func (o *OrderRepo) GetList(ord *models.OrderGetListRequest) (*models.OrderGetList, error) {
 	var resp = models.OrderGetList{}
 	resp.Orders = []models.Order{}
 
 	orders, err := file.ReadOrder(o.fileName)
 	if err != nil {
-		return models.OrderGetList{}, err
+		return &models.OrderGetList{}, err
 	}
 	resp.Count = len(orders)
 	for _, val := range orders {
 		resp.Orders = append(resp.Orders, val)
 	}
-	return resp, nil
+	return &resp, nil
 }
 
 func (o *OrderRepo) Update(ord *models.UpdateOrder) (*models.Order, error) {

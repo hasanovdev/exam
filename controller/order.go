@@ -35,12 +35,12 @@ func (c *Controller) GetByIdOrder(req *models.OrderPrimaryKey) (*models.Order, e
 	return resp, nil
 }
 
-func (c *Controller) OrderGetList(req *models.OrderGetListRequest) (models.OrderGetList, error) {
+func (c *Controller) OrderGetList(req *models.OrderGetListRequest) (*models.OrderGetList, error) {
 
 	resp, err := c.Strg.Order().GetList(req)
 	if err != nil {
 		log.Printf("error while order GetList: %+v\n", err)
-		return models.OrderGetList{}, err
+		return &models.OrderGetList{}, err
 	}
 
 	return resp, nil
@@ -142,6 +142,18 @@ func (c *Controller) OrderPayment(req *models.OrderPayment) error {
 
 	if order.Sum > user.Balance {
 		return errors.New("Not enough balance " + user.FirstName + " " + user.LastName)
+	}
+
+	// 11-task
+	if order.SumCount > 9 {
+		minSum := order.OrderItems[0].TotalPrice / order.OrderItems[0].Count
+		for _, item := range order.OrderItems {
+			if c.GetProduct()[item.ProductId].Price < minSum {
+				minSum = c.GetProduct()[item.ProductId].Price
+			}
+		}
+
+		order.Sum -= minSum
 	}
 
 	order.Status = config.OrderStatus["1"]
